@@ -1,0 +1,1868 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="js/sweetalert-dev.js"></script>
+        <link rel="stylesheet" href="sweetalert.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Serif+KR&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+        />
+        <link
+            href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+            rel="stylesheet"
+        />
+        <script src="js/jquery-1.8.3.min.js"></script>
+        <script src="js/headroom.js"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="js/gsap.min.js"></script>
+        <script src="js/ScrollTrigger.min.js"></script>
+
+        <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+        <style>
+            * {
+                box-sizing: border-box;
+                scroll-behavior: smooth;
+                letter-spacing: -0.5px;
+            }
+            .en_font {
+                font-family: 'Roboto', sans-serif;
+            }
+            body {
+                overflow-x: hidden;
+                font-family: 'Noto Sans KR', sans-serif;
+                margin: 0;
+                box-sizing: border-box;
+                -webkit-font-smoothing: antialiased;
+                word-break: keep-all;
+                padding-top: 76px;
+            }
+            a {
+                color: #000;
+                text-decoration: none;
+            }
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 0px;
+            }
+            li {
+                list-style: none;
+            }
+            img {
+                vertical-align: middle;
+                max-width: 100%;
+            }
+            .m_con {
+                display: none;
+            }
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p,
+            span,
+            strong {
+                margin: 0;
+                cursor: default;
+            }
+            .center {
+                max-width: 360px;
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            /* header */
+            .headroom {
+                will-change: transform;
+                transition: all 300ms linear;
+                background-color: #fff;
+                position: fixed;
+                top: 0px;
+                left: 0px;
+                width: 100%;
+                z-index: 101;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .hd_wrap {
+                width: 100%;
+            }
+            .hd_top {
+                height: 76px;
+                margin: 0 auto;
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .hd_top > a:last-child {
+                transition: all 0.2s;
+            }
+            .hd_top > a:last-child:hover {
+                opacity: 0.7;
+            }
+            header.slideDown {
+                transform: translateY(0%);
+            }
+            header.slideUp {
+                transform: translateY(-76px);
+                /* 헤더 숨길만큼의 높이 */
+            }
+            header > h1 {
+                text-indent: -9999px;
+                line-height: 0px;
+            }
+            .blind {
+                text-indent: -9999px;
+                line-height: 0px;
+            }
+            body.fixed {
+                overflow: hidden;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+            }
+            .m_gnb {
+                display: none;
+                position: fixed;
+                width: 100vw;
+                height: 100vh;
+                background-color: rgba(0, 0, 0, 0.8);
+                z-index: 100;
+                margin: 0px;
+                text-align: center;
+                padding: 50px 0px;
+            }
+            .m_gnb img {
+                position: absolute;
+                z-index: -1;
+                left: 50%;
+                top: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                animation: m_logo 15s linear infinite;
+            }
+            @keyframes m_logo {
+                0% {
+                    transform: translateX(-50%) translateY(-50%) rotateY(0deg);
+                }
+                100% {
+                    transform: translateX(-50%) translateY(-50%) rotateY(360deg);
+                }
+            }
+            .m_gnb > ul > li > a {
+                color: #fff;
+                width: 100%;
+                display: inline-block;
+                padding: 20px 0px;
+                font-size: 22px;
+                letter-spacing: 6px;
+            }
+
+            .hamberger {
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 200;
+            }
+
+            .menu {
+                height: 30px;
+                width: 25px;
+                position: relative;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                padding: 20px;
+            }
+            .menu:hover {
+                cursor: pointer;
+            }
+
+            .hambergerIcon {
+                height: 2px;
+                width: 25px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                border-radius: 50px;
+                background-color: #000;
+                transform: translate(-50%, -50%) rotate(0deg);
+                transition: all ease 0.5s;
+            }
+            .hambergerIcon::before,
+            .hambergerIcon::after {
+                content: '';
+                position: absolute;
+                height: inherit;
+                border-radius: inherit;
+                background-color: inherit;
+                margin: auto;
+                width: 50%;
+                transition: all ease 0.5s;
+            }
+            .hambergerIcon::before {
+                top: -5px;
+                left: 0;
+                transform-origin: left;
+            }
+            .hambergerIcon::after {
+                bottom: -5px;
+                right: 0;
+                transform-origin: right;
+            }
+
+            .open {
+                transform: translate(-50%, -50%) rotate(135deg);
+            }
+            .open::before {
+                top: 0;
+                transform: translateX(100%) rotate(-90deg);
+            }
+            .open::after {
+                bottom: 0;
+                transform: translateX(-100%) rotate(-90deg);
+            }
+
+            /* m_hd_banner_swiper */
+            .m_hd_banner_swiper {
+                overflow: hidden;
+                width: 100%;
+                height: 76px;
+                background-color: #333333;
+            }
+
+            /* m_main_banner */
+            .m_main_banner_swiper {
+                width: 100%;
+                overflow: hidden;
+            }
+            .m_main_banner_swiper .swiper-slide {
+                padding-top: 125px;
+                padding-bottom: 340px;
+                text-align: center;
+                display: flex;
+                background-image: url(img/m/m_main_banner01_bg.png);
+                background-repeat: no-repeat;
+                background-size: cover;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            .m_main_banner_swiper .swiper-slide > p {
+                color: #fff;
+                font-size: 36px;
+                font-weight: 400;
+                margin-top: 15px;
+            }
+            .m_main_banner_swiper .swiper-slide > p > span {
+                font-weight: 700;
+            }
+            .m_main_banner_swiper .swiper-slide > p:last-child {
+                font-size: 24px;
+                margin: 0px;
+            }
+            .m_main_banner_swiper .m_main_banner_page {
+                position: absolute;
+                bottom: 230px;
+                z-index: 1;
+                text-align: center;
+            }
+            .m_main_banner_swiper
+                .m_main_banner_page
+                .swiper-pagination-bullet {
+                background-color: #fff;
+                width: 14px;
+                height: 14px;
+            }
+
+            /* m_main_contents1 */
+            .m_main_contents1 {
+                padding-top: 75px;
+                text-align: center;
+            }
+            .m_main_contents1 > img:last-child {
+                margin-top: 60px;
+            }
+
+            .m_main_tv {
+                background-color: #022350;
+                text-align: center;
+                padding-top: 71px;
+                padding-bottom: 94px;
+            }
+            .m_main_tv_wrap > img:last-child {
+                margin-top: 48px;
+            }
+            .m_main_bna {
+                padding-top: 77px;
+                background-color: #f8f8f8;
+                padding-bottom: 71px;
+            }
+            .m_main_bna_wrap {
+                margin-top: 56px;
+                text-align: center;
+            }
+            .m_main_bna_wrap > span {
+                font-size: 20px;
+                font-weight: 700;
+                color: #5b5b5b;
+                margin-bottom: 18px;
+                display: block;
+            }
+            .m_main_bna_swiper1,
+            .m_main_bna_swiper2,
+            .m_main_bna_swiper3 {
+                height: 549px;
+                overflow: hidden;
+                position: relative;
+                margin-bottom: 53px;
+            }
+            .m_main_bna_swiper3 {
+                margin-bottom: 0px;
+            }
+            .m_main_bna_swiper1 .swiper-slide,
+            .m_main_bna_swiper2 .swiper-slide,
+            .m_main_bna_swiper3 .swiper-slide {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            .m_main_bna_swiper1 .swiper-slide > img,
+            .m_main_bna_swiper2 .swiper-slide > img,
+            .m_main_bna_swiper3 .swiper-slide > img {
+                margin-bottom: 17px;
+            }
+            .m_main_bna_swiper_nav {
+                display: flex;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                z-index: 1;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 100%;
+            }
+
+            /* m_main_equipment */
+            .m_main_equipment {
+                padding-top: 82px;
+                padding-bottom: 78px;
+                text-align: center;
+                background-image: url(img/m/m_main_equipment_bg.png);
+                background-repeat: no-repeat;
+                background-size: cover;
+                overflow: hidden;
+            }
+            .m_main_equipment_page {
+                display: flex;
+                flex-wrap: wrap;
+                margin-top: 42px;
+                margin-bottom: 46px;
+                padding: 0px 25px;
+            }
+            .m_main_equipment
+                .m_main_equipment_page
+                > .swiper-pagination-bullet {
+                width: 25%;
+                border-radius: 0px;
+                border: 1px solid #707070;
+                height: 34px;
+                line-height: 34px;
+                font-size: 13px;
+                font-weight: 400;
+                color: #666666;
+                background-color: transparent;
+                margin: 0px;
+                opacity: 1;
+            }
+            .m_main_equipment
+                .m_main_equipment_page
+                > .swiper-pagination-bullet-active {
+                background-color: #003876;
+                color: #fff;
+                font-weight: 700;
+            }
+
+            /* m_main_implant */
+            .m_main_implant {
+                text-align: center;
+                background-image: url(img/m/m_main_implant_bg.png);
+                background-repeat: no-repeat;
+                background-size: cover;
+                padding-top: 78px;
+                padding-bottom: 77px;
+            }
+            .m_main_implant_con {
+                margin-top: 53px;
+            }
+
+            /* m_main_docter */
+            .m_main_docter {
+                text-align: center;
+                padding-top: 79px;
+                background-color: #f8f8f8;
+            }
+
+            /* main_slogan */
+            .main_slogan {
+                background-image: url(img/m/m_main_slogan_bg.png);
+                background-repeat: no-repeat;
+                background-size: cover;
+                text-align: center;
+                padding-top: 89px;
+                padding-bottom: 65px;
+            }
+            .main_slogan_text > p {
+                color: #fff;
+                margin-top: 39px;
+                font-size: 13px;
+                font-weight: 300;
+                margin-bottom: 25px;
+            }
+            .main_slogan_text > span {
+                background-color: rgba(0, 0, 0, 0.2);
+                line-height: 29px;
+                padding: 0px 23px;
+                font-size: 11px;
+                font-weight: 300;
+                color: #fff;
+                margin-bottom: 425px;
+                display: inline-block;
+            }
+            .main_slogan_text > span > span {
+                font-weight: 700;
+            }
+
+            /* m_main_category */
+            .m_main_category {
+                padding-top: 65px;
+                padding-bottom: 150px;
+                box-shadow: 10px 30px 30px rgba(0, 0, 0, 0.03);
+                overflow: hidden;
+            }
+            .m_main_category_title {
+                text-align: center;
+            }
+            .m_main_category_swiper {
+                margin-top: 66px;
+                position: relative;
+                width: 100%;
+            }
+            .m_main_category_swiper .swiper-slide {
+                background-color: #f7f7f7;
+                color: #f7f7f7;
+                padding-bottom: 29px;
+                padding-top: 39px;
+                transition: all 0.2s;
+                padding-left: 15px;
+                padding-right: 15px;
+                position: relative;
+            }
+            .m_main_category_swiper .swiper-slide::after {
+                display: block;
+                content: '';
+                position: absolute;
+                background-color: #fff;
+                top: 15px;
+                left: 50%;
+                transform: translateX(-50%);
+                height: 6px;
+                width: 0px;
+            }
+            .m_main_category_swiper .swiper-slide > strong {
+                display: block;
+                font-size: 15px;
+                font-weight: 400;
+            }
+            .m_main_category_swiper .swiper-slide > span {
+                font-size: 14px;
+                font-weight: 300;
+                margin-top: 16px;
+                margin-bottom: 16px;
+                display: block;
+            }
+            .m_main_category_swiper .swiper-slide > p {
+                font-size: 11px;
+                font-weight: 300;
+                margin-top: 19px;
+            }
+            .m_main_category_nav {
+                display: flex;
+                position: absolute;
+                width: 100%;
+                top: 50%;
+                transform: translateY(-50%);
+                justify-content: space-between;
+                z-index: 1;
+            }
+            .m_main_category_swiper .swiper-slide-active {
+                transform: scale(1.1);
+                background-color: #003876;
+                z-index: 1;
+                color: #fff;
+            }
+            .m_main_category_swiper .swiper-slide-active::after {
+                width: 214px;
+                transition: all 3s;
+            }
+
+            /* m_main_interior */
+            .m_main_interior {
+                text-align: center;
+                padding-top: 85px;
+                padding-bottom: 59px;
+            }
+            .m_main_interior_swiper {
+                position: relative;
+                width: 357px;
+                margin: 50px auto 0px;
+            }
+            .m_main_interior_swiper2 {
+                width: 100%;
+                overflow: hidden;
+            }
+            .m_main_interior_nav {
+                display: flex;
+                justify-content: center;
+                margin-top: 30px;
+                margin-bottom: 62px;
+            }
+            .m_main_interior_nav > div {
+                cursor: pointer;
+            }
+            .m_main_interior_line {
+                background-color: #707070;
+                height: 37px;
+                width: 1px;
+                margin: 0px 29px;
+            }
+            .m_main_interior_swiper2 .swiper-slide {
+                opacity: 0.3;
+            }
+            .m_main_interior_swiper2 .swiper-slide-active {
+                opacity: 1;
+            }
+
+            /* m_main_come */
+            /* ft_manu */
+            .ft_manu {
+                display: flex;
+                align-items: flex-end;
+                justify-content: space-between;
+                padding-top: 36px;
+                padding-bottom: 34px;
+                width: 290px;
+                margin: 0 auto;
+            }
+            .ft_manu > a {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            .ft_manu > a > img {
+                margin-bottom: 10px;
+            }
+            .ft_manu > a:nth-of-type(1) > img {
+                margin-bottom: 12px;
+            }
+            .ft_manu > a:nth-of-type(2) > img {
+                margin-bottom: 7px;
+            }
+            .ft_manu_line {
+                width: 1px;
+                height: 64px;
+                background-color: #707070;
+            }
+
+            /* footer */
+            footer {
+                padding-top: 56px;
+                padding-bottom: 150px;
+                background-image: url(img/ft_bg.png);
+                background-repeat: no-repeat;
+                background-size: cover;
+                text-align: center;
+            }
+            footer > div > a {
+                margin-bottom: 35px;
+                display: block;
+            }
+            footer > div > img {
+                margin-top: 40px;
+                margin-bottom: 27px;
+            }
+            .ft_menu > a {
+                color: rgba(255, 255, 255, 0.84);
+                font-size: 11px;
+                font-weight: 400;
+            }
+            .ft_menu > a:first-child {
+                display: block;
+                font-size: 20px;
+                font-weight: 700;
+                text-align: center;
+                margin-bottom: 0.5px;
+            }
+            .ft_text {
+                margin-bottom: 40px;
+            }
+            .ft_text > address {
+                font-size: 12px;
+                font-weight: 400;
+                font-style: normal;
+                margin-bottom: 11px;
+                color: rgba(255, 255, 255, 0.84);
+            }
+            .ft_text > small {
+                font-size: 12px;
+                font-weight: 300;
+                color: rgba(255, 255, 255, 0.84);
+            }
+            .ft_menu > span {
+                color: #fff;
+            }
+
+            /* widget */
+
+            .fixed_form_wrap {
+                width: 100%;
+                position: fixed;
+                bottom: 0px;
+                left: 0px;
+                z-index: 2;
+            }
+            .cs_logo {
+                display: none;
+            }
+            #req_form {
+                background-color: rgba(13, 29, 52, 0.8);
+                padding: 10px 0px;
+            }
+            #req_form > table > tbody > tr > td:nth-child(3) {
+                margin: 15px 0px;
+            }
+            .cs_form_btn {
+                line-height: 30px;
+                background-color: #000;
+                width: 117px;
+                font-size: 12px !important;
+                font-weight: 400;
+                color: #fff;
+                display: inline-block;
+                text-align: center;
+                text-decoration: none;
+                border: 1px solid #fff;
+                box-sizing: border-box;
+                border-radius: 0px;
+                cursor: pointer;
+            }
+            .table {
+                width: 100%;
+                position: relative;
+            }
+            .agree > label {
+                color: #fff;
+                font-size: 12px;
+                font-weight: 400;
+            }
+            .agree > label > a {
+                text-decoration: none;
+                color: #9cdcf9;
+            }
+            .cs_input > table > tbody > tr > td:nth-child(4) > label {
+                color: #fff;
+            }
+            .cs_input > table > tbody > tr > td:nth-child(1) > input,
+            .cs_input > table > tbody > tr > td:nth-child(2) > input,
+            .cs_input > table > tbody > tr > td:nth-child(3) > input,
+            .form-control {
+                height: 30px;
+                border-radius: 0px;
+                border: none;
+                text-indent: 18px;
+                width: 116px;
+                font-size: 12px;
+                font-weight: 400;
+                color: #191919;
+                font-family: 'Noto Sans KR', sans-serif;
+            }
+            #req_form > table > tbody > tr {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+            }
+            .cs_input > table > tbody > tr > td:nth-child(3) > select {
+                margin-right: 10px;
+                width: 116px;
+                background-color: #fff;
+            }
+            #agree_visual {
+                width: 15px;
+                height: 15px;
+                margin-right: 8px;
+            }
+            .privacy_bg {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 999999;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+            .privacy_wrap {
+                background-color: #352f2d;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                transition: all 1s;
+                opacity: 1;
+                width: 92%;
+                height: 517px;
+            }
+            .privacy_btn {
+                cursor: pointer;
+                position: absolute;
+                top: 25px;
+                right: 25px;
+            }
+            #fregister_term {
+                text-align: center;
+            }
+            #fregister_term > h2 {
+                color: #fff;
+            }
+            #fregister_term > textarea {
+                color: #000;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="m_gnb">
+            <ul>
+                <li><a href="#page1">병원소개</a></li>
+                <li><a href="#page2">의료진소개</a></li>
+                <li><a href="#page3">진료과목</a></li>
+                <li><a href="#page4">디지털장비</a></li>
+                <li><a href="#page5">치료사례</a></li>
+                <li><a href="#page6">오시는 길</a></li>
+                <img src="img/m/menu_logo.png" alt="플러스덴치과의원" />
+            </ul>
+        </nav>
+        <header class="headroom">
+            <h1>플러스덴치과의원</h1>
+            <div class="hd_wrap">
+                <div class="hd_top">
+                    <a href="tel:02-2215-2275"
+                        ><img src="img/m/m_hd_tel.png" alt="02-2215-2275"
+                    /></a>
+                    <a href="http://plusden.co.kr/" class="hd_logo"
+                        ><img src="img/m/m_hd_logo.png" alt="플러스덴치과의원"
+                    /></a>
+                    <div class="hamberger">
+                        <div class="menu">
+                            <div class="hambergerIcon"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="m_hd_banner_swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img
+                        src="img/hd_banner01.png"
+                        alt="절개없는 플러스덴 임플란트"
+                    />
+                </div>
+                <div class="swiper-slide">
+                    <img
+                        src="img/hd_banner02.jpg"
+                        alt="절개없는 플러스덴 임플란트"
+                    />
+                </div>
+            </div>
+        </div>
+        <section class="m_main_banner">
+            <h2 class="blind">메인배너</h2>
+            <div class="m_main_banner_swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img
+                            src="img/main_banner01_icon.png"
+                            alt="플러스덴치과 아이콘"
+                        />
+                        <p><span>30년 경력</span>의 풍부한</p>
+                        <p>임상경험을 갖춘 <span>플러스덴치과</span></p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img
+                            src="img/main_banner01_icon.png"
+                            alt="플러스덴치과 아이콘"
+                        />
+                        <p><span>30년 경력</span>의 풍부한</p>
+                        <p>임상경험을 갖춘 <span>플러스덴치과</span></p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img
+                            src="img/main_banner01_icon.png"
+                            alt="플러스덴치과 아이콘"
+                        />
+                        <p><span>30년 경력</span>의 풍부한</p>
+                        <p>임상경험을 갖춘 <span>플러스덴치과</span></p>
+                    </div>
+                </div>
+                <div class="m_main_banner_page"></div>
+            </div>
+        </section>
+        <section class="m_main_contents1" id="page1">
+            <h2 class="blind">메인콘텐츠1</h2>
+            <img
+                src="img/m/m_main_contents1_title.png"
+                alt="플러스덴치과가 사랑받는 이유"
+                class="main_title"
+            />
+            <img
+                src="img/m/m_main_contents1.svg"
+                alt="30년간 플러스덴이 사랑받을 수 있었던 이유입니다."
+            />
+        </section>
+        <section class="m_main_tv">
+            <h2 class="blind">브랜딩영상</h2>
+            <div class="m_main_tv_wrap">
+                <img
+                    src="img/m/m_main_tv_title.png"
+                    alt="플러스덴치과 TV"
+                    class="main_title"
+                />
+                <!-- <video src=""></video> -->
+                <img
+                    src="img/m/m_main_tv_con.png"
+                    alt="플러스덴치과 브랜딩영상"
+                    data-aos="fade-up"
+                />
+            </div>
+        </section>
+        <section class="m_main_bna" id="page5">
+            <h2 class="blind">치료사례</h2>
+            <div class="center">
+                <img
+                    src="img/m/m_main_bna_title.png"
+                    alt="플러스덴치과 치료 사례"
+                    class="main_title"
+                />
+                <div class="m_main_bna_wrap">
+                    <span>임플란트 사례</span>
+                    <div class="m_main_bna_swiper1" data-aos="fade-up">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="img/m/m_i1.png" alt="Before" /><a
+                                    href="#none"
+                                    ><img src="img/m/m_i2.png" alt="After"
+                                /></a>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="img/m/m_i1.png" alt="Before" /><a
+                                    href="#none"
+                                    ><img src="img/m/m_i2.png" alt="After"
+                                /></a>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="img/m/m_i1.png" alt="Before" /><a
+                                    href="#none"
+                                    ><img src="img/m/m_i2.png" alt="After"
+                                /></a>
+                            </div>
+                        </div>
+                        <div class="m_main_bna_swiper_nav">
+                            <div class="m_main_bna_swiper_prev">
+                                <img
+                                    src="img/m/m_main_bna_prev.png"
+                                    alt="이전"
+                                />
+                            </div>
+                            <div class="m_main_bna_swiper_next">
+                                <img
+                                    src="img/m/m_main_bna_next.png"
+                                    alt="다음"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <span>치아교정 사례</span>
+                    <div class="m_main_bna_swiper2" data-aos="fade-up">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="img/m/m_i1.png" alt="Before" /><a
+                                    href="#none"
+                                    ><img src="img/m/m_i2.png" alt="After"
+                                /></a>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="img/m/m_i1.png" alt="Before" /><a
+                                    href="#none"
+                                    ><img src="img/m/m_i2.png" alt="After"
+                                /></a>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="img/m/m_i1.png" alt="Before" /><a
+                                    href="#none"
+                                    ><img src="img/m/m_i2.png" alt="After"
+                                /></a>
+                            </div>
+                        </div>
+                        <div class="m_main_bna_swiper_nav">
+                            <div class="m_main_bna_swiper_prev">
+                                <img
+                                    src="img/m/m_main_bna_prev.png"
+                                    alt="이전"
+                                />
+                            </div>
+                            <div class="m_main_bna_swiper_next">
+                                <img
+                                    src="img/m/m_main_bna_next.png"
+                                    alt="다음"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <span>심미치료 사례</span>
+                    <div class="m_main_bna_swiper3" data-aos="fade-up">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="img/m/m_i1.png" alt="Before" /><a
+                                    href="#none"
+                                    ><img src="img/m/m_i2.png" alt="After"
+                                /></a>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="img/m/m_i1.png" alt="Before" /><a
+                                    href="#none"
+                                    ><img src="img/m/m_i2.png" alt="After"
+                                /></a>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="img/m/m_i1.png" alt="Before" /><a
+                                    href="#none"
+                                    ><img src="img/m/m_i2.png" alt="After"
+                                /></a>
+                            </div>
+                        </div>
+                        <div class="m_main_bna_swiper_nav">
+                            <div class="m_main_bna_swiper_prev">
+                                <img
+                                    src="img/m/m_main_bna_prev.png"
+                                    alt="이전"
+                                />
+                            </div>
+                            <div class="m_main_bna_swiper_next">
+                                <img
+                                    src="img/m/m_main_bna_next.png"
+                                    alt="다음"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="m_main_equipment" id="page4">
+            <h2 class="blind">장비소개</h2>
+            <div class="m_main_equipment_title">
+                <img
+                    src="img/m/m_main_equipment_title.png"
+                    alt="차별화된 첨단 디지털 장비"
+                />
+            </div>
+            <div class="m_main_equipment_inner">
+                <div class="m_main_equipment_swiper">
+                    <div class="m_main_equipment_page"></div>
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide m_main_equipment1">
+                            <img
+                                src="img/m/m_main_equipment1.svg"
+                                alt="3D CT 바텍"
+                            />
+                        </div>
+                        <div class="swiper-slide m_main_equipment2">
+                            <img
+                                src="img/m/m_main_equipment1.svg"
+                                alt="3D CT 바텍"
+                            />
+                        </div>
+                        <div class="swiper-slide m_main_equipment3">
+                            <img
+                                src="img/m/m_main_equipment1.svg"
+                                alt="3D CT 바텍"
+                            />
+                        </div>
+                        <div class="swiper-slide m_main_equipment4">
+                            <img
+                                src="img/m/m_main_equipment1.svg"
+                                alt="3D CT 바텍"
+                            />
+                        </div>
+                        <div class="swiper-slide m_main_equipment5">
+                            <img
+                                src="img/m/m_main_equipment1.svg"
+                                alt="3D CT 바텍"
+                            />
+                        </div>
+                        <div class="swiper-slide m_main_equipment6">
+                            <img
+                                src="img/m/m_main_equipment1.svg"
+                                alt="3D CT 바텍"
+                            />
+                        </div>
+                        <div class="swiper-slide m_main_equipment7">
+                            <img
+                                src="img/m/m_main_equipment1.svg"
+                                alt="3D CT 바텍"
+                            />
+                        </div>
+                        <div class="swiper-slide m_main_equipment8">
+                            <img
+                                src="img/m/m_main_equipment1.svg"
+                                alt="3D CT 바텍"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="m_main_implant">
+            <h2 class="blind">임플란트</h2>
+            <div class="m_main_implant_intro">
+                <img
+                    src="img/m/m_main_implant_title.png"
+                    alt="디지털 임플란트"
+                />
+            </div>
+            <div class="m_main_implant_con">
+                <img src="img/m/m_main_implant_con.svg" alt="디지털 임플란트" />
+            </div>
+        </section>
+        <section class="m_main_docter" id="page2">
+            <h2 class="blind">의료진소개</h2>
+            <img
+                src="img/m/m_main_docter_title.png"
+                alt="플러스덴치과 의료진"
+            />
+            <img src="img/m/m_main_docter_con.svg" alt="플러스덴치과 의료진" />
+        </section>
+        <section class="main_slogan">
+            <h2 class="blind">플러스덴치과</h2>
+            <div class="center">
+                <div class="main_slogan_text">
+                    <img
+                        src="img/m/m_main_slogan_title.png"
+                        alt="전국에서 찾는 플러스덴치과"
+                    />
+                    <p>
+                        플러스덴치과를 찾아오시는데에는 이유가 있습니다.<br />
+                        플러스덴치과의 임플란트는 <span>실력</span>으로
+                        증명하고, <span>결과</span>로 만족시킵니다.
+                    </p>
+                    <span>
+                        <span>#</span>디지털임플란트
+                        <span>#</span>보건복지부인증전문의 치과
+                        <span>#</span>원데이임플란트
+                    </span>
+                    <div class="main_slogan_box">
+                        <img src="img/m/main_slogan_con.png" alt="" />
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="m_main_category" id="page3">
+            <h2 class="blind">진료항목</h2>
+            <div class="m_main_category_title">
+                <img
+                    src="img/m/m_main_category_title.png"
+                    alt="플러스덴치과 진료 과목"
+                />
+            </div>
+            <div class="m_main_category_swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <strong>임플란트</strong>
+                        <span>가이드 임플란트</span>
+                        <img src="img/main_category_con1.png" alt="임플란트" />
+                        <p>
+                            KaVo K.E.Y Laser를 통하여 출혈을 감소한 안전한<br />
+                            시술을 시행하며 회복이 빠르고 효율적인 치료가<br />
+                            가능합니다.
+                        </p>
+                    </div>
+                    <div class="swiper-slide">
+                        <strong>치아교정</strong>
+                        <span>레진교정, 클리피씨 교정, 메탈교정 </span>
+                        <img src="img/main_category_con2.png" alt="치아교정" />
+                        <p>
+                            턱 간의 관계를 개선하고 치아 조화롭게 해주는 것
+                            외에<br />
+                            저작, 발음, 턱관절 기능을 개선하고 충치나
+                            잇몸병을<br />
+                            예방할 수 있는 좋은 조건을 만들어 줍니다.
+                        </p>
+                    </div>
+                    <div class="swiper-slide">
+                        <strong>보철치료</strong>
+                        <span>틀니, 보철장치</span>
+                        <img src="img/main_category_con3.png" alt="보철치료" />
+                        <p>
+                            치아를 상실했을 경우 인공적으로 치아를 대체할 수<br />있는
+                            보형물로 턱과 치아의 씹는 기능, 말하는 기능,<br />미적
+                            기능을 회복시켜주는 치료입니다.
+                        </p>
+                    </div>
+                    <div class="swiper-slide">
+                        <strong>심미치료</strong>
+                        <span>라미네이트, 잇몸성형, 치아미백</span>
+                        <img src="img/main_category_con4.png" alt="심미치료" />
+                        <p>
+                            덧니가 심한 경우나 돌출된 치아의 경우, 변색되고<br />고르지
+                            못한 경우 치료를 통해 심미적으로 보기 좋게<br />만드는
+                            전반적인 치료입니다.
+                        </p>
+                    </div>
+                    <div class="swiper-slide">
+                        <strong>자연치아살리기</strong>
+                        <span>충치치료, 스케일링, 사랑니, 잇몸질환</span>
+                        <img
+                            src="img/main_category_con5.png"
+                            alt="자연치아살리기"
+                        />
+                        <p>
+                            손상된 치아를 발치하지 않고, 최대한 자연치아를<br />보존하는
+                            치료이며 정기적인 방문과 관리를 통하여<br />추가
+                            손상을 예방합니다.
+                        </p>
+                    </div>
+                </div>
+                <div class="m_main_category_nav">
+                    <div class="m_main_category_prev">
+                        <img src="img/m/m_main_category_prev.png" alt="이전" />
+                    </div>
+                    <div class="m_main_category_next">
+                        <img src="img/m/m_main_category_next.png" alt="다음" />
+                    </div>
+                </div>
+            </div>
+        </section>
+        <article class="m_main_interior">
+            <h2 class="blind">인테리어</h2>
+            <div>
+                <div class="m_main_interior_title">
+                    <img
+                        src="img/m/m_main_interior_title.png"
+                        alt="플러스덴치과 둘러보기"
+                    />
+                </div>
+                <div class="m_main_interior_swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img
+                                src="img/main_interior01.png"
+                                alt="안내데스크"
+                            />
+                        </div>
+                        <div class="swiper-slide">
+                            <img
+                                src="img/main_interior01.png"
+                                alt="안내데스크"
+                            />
+                        </div>
+                        <div class="swiper-slide">
+                            <img
+                                src="img/main_interior01.png"
+                                alt="안내데스크"
+                            />
+                        </div>
+                        <div class="swiper-slide">
+                            <img
+                                src="img/main_interior01.png"
+                                alt="안내데스크"
+                            />
+                        </div>
+                        <div class="swiper-slide">
+                            <img
+                                src="img/main_interior01.png"
+                                alt="안내데스크"
+                            />
+                        </div>
+                        <div class="swiper-slide">
+                            <img
+                                src="img/main_interior01.png"
+                                alt="안내데스크"
+                            />
+                        </div>
+                        <div class="swiper-slide">
+                            <img
+                                src="img/main_interior01.png"
+                                alt="안내데스크"
+                            />
+                        </div>
+                    </div>
+                    <div class="m_main_interior_nav">
+                        <div class="m_main_interior_prev">
+                            <img
+                                src="img/m/m_main_interior_prev.png"
+                                alt="이전"
+                            />
+                        </div>
+                        <div class="m_main_interior_line"></div>
+                        <div class="m_main_interior_next">
+                            <img
+                                src="img/m/m_main_interior_next.png"
+                                alt="다음"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="m_main_interior_swiper2" thumbsSlider="">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img
+                            src="img/main_interior01_thumb.png"
+                            alt="안내데스크"
+                        />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/main_interior02_thumb.png" alt="CT실" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/main_interior03_thumb.png" alt="대기실" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/main_interior04_thumb.png" alt="진료실" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/main_interior05_thumb.png" alt="소독실" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/main_interior06_thumb.png" alt="수술실" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/main_interior07_thumb.png" alt="상담실" />
+                    </div>
+                </div>
+            </div>
+        </article>
+        <section class="m_main_come" id="page6">
+            <h2 class="blind">오시는길</h2>
+            <div class="main_come_con">
+                <img src="img/m/m_main_come_con1.svg" alt="진료시간 안내" />
+                <img src="img/m/m_main_come_con2.svg" alt="오시는 길 " />
+            </div>
+            <div id="map"><img src="img/map.png" alt="임시지도" /></div>
+        </section>
+        <div class="ft_manu">
+            <a href="#none"
+                ><img src="img/m/ft_manu1.png" alt="네이버예약" />네이버예약</a
+            >
+            <div class="ft_manu_line"></div>
+            <a href="#none"
+                ><img src="img/m/ft_manu2.png" alt="카톡상담" />카톡상담</a
+            >
+            <div class="ft_manu_line"></div>
+            <a href="#none"
+                ><img src="img/m/ft_manu3.png" alt="공식블로그" />공식블로그</a
+            >
+        </div>
+        <footer>
+            <h2 class="blind">플러스덴치과의원</h2>
+            <div class="center">
+                <a href="#none"
+                    ><img src="img/m/m_ft_logo.png" alt="플러스덴치과의원"
+                /></a>
+                <div class="ft_text">
+                    <address>
+                        플러스덴치과의원 ｜ 서울 동대문구 사가정로 122, 304호,
+                        305호, 306호<br />사업자번호 : 737-20-01341 ｜ 대표 :
+                        차은광
+                    </address>
+                    <small
+                        >COPYRIGHT 2022 PLUSDEN CLINIC. ALL RIGHTS RESERVED.<br />
+                        Design & Publishing by Group - D</small
+                    >
+                </div>
+                <img src="img/m/m_ft_top_con.png" alt="플러스덴치과 협력병원" />
+                <div class="ft_menu">
+                    <a href="tel:02-2215-2275">02-2215-2275</a>
+                    <a href="#none">개인정보취급방침</a>
+                    <span> ｜ </span>
+                    <a href="#none">이용약관</a>
+                </div>
+            </div>
+        </footer>
+        <div class="fixed_form_wrap">
+            <form
+                name="req_form"
+                id="req_form"
+                method="post"
+                onsubmit="return fwrite_submit(this);"
+            >
+                <input
+                    type="hidden"
+                    name="bo_table"
+                    id="bo_table"
+                    value="database"
+                />
+                <input type="hidden" name="wr_10" value="N" />
+                <input type="hidden" name="wr_4" value="홈페이지" />
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td class="cs_logo">
+                                <img src="img/widget_logo.png" />
+                            </td>
+                            <td class="cs_input">
+                                <table class="table_form">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <input
+                                                    class="form-control"
+                                                    name="wr_name"
+                                                    id="wr_name"
+                                                    maxlength="5"
+                                                    required
+                                                    placeholder="성함"
+                                                />
+                                            </td>
+                                            <td>
+                                                <input
+                                                    class="form-control"
+                                                    name="wr_1"
+                                                    id="wr_1"
+                                                    type="text"
+                                                    required
+                                                    placeholder="연락처"
+                                                    maxlength="13"
+                                                />
+                                            </td>
+                                            <td>
+                                                <select
+                                                    class="form-control"
+                                                    name="wr_2"
+                                                    name="wr_2"
+                                                    required
+                                                    class="ed"
+                                                >
+                                                    <option value="">
+                                                        진료과목
+                                                    </option>
+                                                    <option
+                                                        value="임플란트 상담"
+                                                    >
+                                                        임플란트 상담
+                                                    </option>
+                                                    <option value="충치치료">
+                                                        충치치료
+                                                    </option>
+                                                    <option value="신경치료">
+                                                        신경치료
+                                                    </option>
+                                                    <option value="잇몸치료">
+                                                        잇몸치료
+                                                    </option>
+                                                    <option value="스케일링">
+                                                        스케일링
+                                                    </option>
+                                                    <option value="사랑니 발치">
+                                                        사랑니 발치
+                                                    </option>
+                                                    <option
+                                                        value="교정치료(장치)"
+                                                    >
+                                                        교정치료(장치)
+                                                    </option>
+                                                    <option value="단순 상담">
+                                                        단순 상담
+                                                    </option>
+                                                    <option value="기타치료">
+                                                        기타치료
+                                                    </option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td>
+                                <div align="center" class="agree">
+                                    <input
+                                        name="agree_visual"
+                                        type="checkbox"
+                                        id="agree_visual"
+                                        value="1"
+                                        required
+                                        checked
+                                    />
+                                    <label for="agree_visual">
+                                        <a href="#none;">개인정보 보호정책</a>에
+                                        동의합니다.
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <input
+                                    class="cs_form_btn"
+                                    type="submit"
+                                    id="btn_submit"
+                                    value="상담예약"
+                                />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <div class="privacy_bg">
+            <div class="privacy_wrap">
+                <img
+                    src="img/close_btn.png"
+                    alt="이용약관"
+                    class="privacy_btn"
+                />
+                <section
+                    id="fregister_term"
+                    style="width: 95%; margin: auto; color: #fff"
+                >
+                    <h2
+                        style="
+                            font-size: 24px;
+                            margin-top: 40px;
+                            margin-bottom: 20px;
+                            font-weight: 100;
+                        "
+                    >
+                        개인정보취급방침
+                    </h2>
+                    <br />
+                    <textarea
+                        readonly=""
+                        style="
+                            width: 100%;
+                            height: 370px;
+                            line-height: 20px;
+                            padding: 10px;
+                        "
+                    >
+                개인정보 취급방침
+                플러스덴치과의원 (이하 ‘본원’ 이라 함)은 귀하의 개인정보보호를 매우 중요시하며, 『개인정보보호법』을 준수하고 있습니다. 본원은 개인정보처리방침을 통하여 귀하께서 제공하시는 개인정보가 어떠한 용도와
+                방식으로 이용되고 있으며 개인정보보호를 위해 어떠한 조치가 취해지고 있는지 알려드립니다. 이 개인정보처리방침의 순서는 다음과 같습니다.
+                
+                1. 수집하는 개인정보의 항목 및 수집방법
+                2. 개인정보의 수집 및 이용목적
+                3. 개인정보의 보유 및 이용기간
+                4. 개인정보의 파기절차 및 그 방법
+                5. 개인정보 제공 및 공유
+                6. 수집한 개인정보의 취급위탁
+                7. 이용자 및 법정대리인의 권리와 그 행사방법
+                8. 동의철회 / 회원탈퇴 방법
+                9. 개인정보 자동 수집 장치의 설치/운영 및 그 거부에 관한 사항
+                10. 개인정보관리책임자
+                11. 개인정보의 안전성 확보조치
+                12. 정책 변경에 따른 공지의무
+                1. 수집하는 개인정보의 항목 및 수집방법
+                본원은 회원가입 시 서비스 이용을 위해 필요한 최소한의 개인정보만을 수집합니다. 귀하가 본원의 서비스를 이용하기 위해서는 회원가입 시 필수항목과 선택항목이 있는데, 메일수신여부 등과 같은 선택항목은 입력하지
+                않더라도 서비스 이용에는 제한이 없습니다.
+                
+                ο [진료정보]
+                - 수집항목 : 성명, 주소, 연락처, 이메일, 생년월일, 성별 등
+                ※ 의료법에 의해 고유식별정보 및 진료정보를 의무적으로 보유하여야 하여야 함(별도 동의 불필요)
+                
+                ο [홈페이지 회원가입 시 수집항목]
+                - 필수항목 : 성명, 아이디, 이메일, 비밀번호, 성별, 연락처(전화번호, 휴대폰번호)
+                - 서비스 이용 과정이나 서비스 제공 업무 처리 과정에서 다음과 같은 정보들이 자 동으로 생성되어 수집될 수 있습니다. : 서비스 이용기록, 접속 로그, 쿠키, 접속 IP 정보
+                
+                ο [개인정보 수집방법]
+                - 다음과 같은 방법으로 개인정보를 수집합니다.
+                - 홈페이지, 서면양식, 팩스, 전화, 상담 게시판, 이메일
+                
+                2. 개인정보의 수집 및 이용목적
+                본원은 수집한 개인정보를 다음의 목적을 위해 활용합니다.
+                이용자가 제공한 모든 정보는 하기 목적에 필요한 용도 이외로는 사용되지 않으며 이용 목적이 변경될 시에는 사전 동의를 구할 것입니다.
+                ο [진료정보]
+                - 진단 및 치료를 위한 진료서비스와 청구, 수납 및 환급 등의 원무서비스 제공
+                ο [홈페이지 회원정보]
+                - 필수정보 : 홈페이지를 통한 진료 예약, 예약조회 및 회원제 서비스 제공,
+                
+                3. 개인정보의 보유 및 이용기간
+                본원은 개인정보의 수집목적 또는 제공받은 목적이 달성된 때에는 귀하의 개인정보를 지체 없이 파기합니다.
+                ο [진료정보]
+                - 의료법에 명시된 진료기록 보관 기준에 준하여 보관
+                ο [홈페이지 회원정보]
+                - 회원가입을 탈퇴하거나 회원에서 제명된 때
+                다만, 수집목적 또는 제공받은 목적이 달성된 경우에도 상법 등 법령의 규정에 의 하여 보존할 필요성이 있는 경우에는 귀하의 개인정보를 보유할 수 있습니다.
+                - 소비자의 불만 또는 분쟁처리에 관한 기록 : 3년 (전자상거래 등에서의 소비자보호에 관한 법률)
+                - 신용정보의 수집/처리 및 이용 등에 관한 기록 : 3년 (신용정보의 이용 및 보호에 관한 법률)
+                - 본인 확인에 관한 기록 : 6개월 (정보통신망 이용촉진 및 정보보호 등에 관한 법 률)
+                - 방문에 관한 기록 : 3개월 (통신비밀보호법)
+                
+                4. 개인정보의 파기절차 및 그 방법
+                본원은 『개인정보의 수집 및 이용목적』이 달성된 후에는 즉시 파기합니다. 파기절차 및 방법은 다음과 같습니다.
+                ο [파기절차]
+                이용자가 회원가입 등을 위해 입력한 정보는 목적이 달성된 후 파기방법에 의하여 즉시 파기합니다.
+                ο [파기방법]
+                전자적 파일형태로 저장된 개인정보는 기록을 재생할 수 없는 기술적 방법을 사용하여 삭제합니다.
+                종이에 출력된 개인정보는 분쇄기로 분쇄하거나 소각하여 파기합니다.
+                
+                5. 이용자 및 법정대리인의 권리와 그 행사방법
+                만14세 미만 아동(이하 "아동"이라 함)의 회원가입은 아동이 이해하기 쉬운 평이한 표현으로 작성된 별도의 양식을 통해 이루어지고 있으며 개인정보 수집 시 반드시 법정대리인의 동의를 구하고 있습니다.
+                본원은 법정대리인의 동의를 받기 위하여 아동으로부터 법정대리인의 성명과 연락처 등 최소한의 정보를 수집하고 있으며, 개인정보취급방침에서 규정하고 있는 방법에 따라 법정대리인의 동의를 받고 있습니다.
+                아동의 법정대리인은 아동의 개인정보에 대한 열람, 정정 및 삭제를 요청할 수 있습니다. 아동의 개인정보를 열람·정정, 삭제하고자 할 경우에는 회원정보수정을 클릭하여 법정대리인 확인 절차를 거치신 후 아동의
+                개인정보를 법정대리인이 직접 열람·정정, 삭제하거나, 개인정보보호책임자로 서면, 전화, 또는 Fax등으로 연락하시면 필요한 조치를 취합니다.
+                본원은 아동에 관한 정보를 제3자에게 제공하거나 공유하지 않으며, 아동으로부터 수집한 개인정보에 대하여 법정대리인이 오류의 정정을 요구하는 경우 그 오류를 정정할 때까지 해당 개인정보의 이용 및 제공을 금지합니다.
+                ※ 법에 의해 보관이 의무화된 개인정보는 요청이 있더라도 보관기간내에수정·삭제할 수 없습니다.
+                
+                6. 동의철회 / 회원탈퇴 방법
+                귀하는 회원가입 시 개인정보의 수집ㆍ이용및 제공에 대해 동의하신 내용을 언제든지 철회하실 수 있습니다. 회원탈퇴는 본원 홈페이지 마이페이지의『회원탈퇴』를 클릭하여 본인 확인 절차를 거치신 후 직접 회원탈퇴를
+                하시거나, 개인정보관리책임자로 서면, 전화 또는 Fax 등으로 연락하시면 지체 없이 귀하의 개인정보를 파기하는 등 필요한 조치를 하겠습니다.
+                
+                7. 개인정보 자동 수집 장치의 설치/운영 및 그 거부에 관한 사항
+                본원은 귀하의 정보를 수시로 저장하고 찾아내는 '쿠키(cookie)'를 운용합니다. 쿠키란 본원의 웹사이트를 운영하는데 이용되는 서버가 귀하의 브라우저에 보내는 아주 작은 텍스트 파일로서 귀하의 컴퓨터 하드디스크에
+                저장됩니다. 본원은 다음과 같은 목적을 위해 쿠키를 사용합니다.
+                귀하는 쿠키 설치에 대한 선택권을 가지고 있습니다. 따라서, 귀하는 웹 브라우저에서 옵션을 설정함으로써 모든 쿠키를 허용하거나, 쿠키가 저장될 때마다 확인을 거치거나, 아니면 모든 쿠키의 저장을 거부할 수도 있습니다.
+                회원님께서 쿠키 설치를 거부하셨을 경우 일부 서비스 제공에 어려움이 있습니다.
+                
+                8. 개인정보관리책임자
+                귀하의 개인정보를 보호하고 개인정보와 관련한 불만을 처리하기 위하여 본원은 아래와 같이 개인정보관리책임자를 두고 있습니다.
+                
+                ο [개인정보 관리책임자]
+                - 이름 : 차은광
+                - 직위 : 원장
+                - 소속 : 플러스덴치과의원
+                - 전화번호 : 02-2215-2275
+                - 메일 :group-d@naver.com
+                귀하께서는 본원의 서비스를 이용하시며 발생하는 모든 개인정보보호 관련 민원을 개인정보관리책임자로 신고하실 수 있습니다. 본원은 이용자들의 신고사항에 대해 신속하게 충분한 답변을 드릴 것입니다. 기타 개인정보침해에
+                대한 신고나 상담이 필요하신 경우에는 아래 기관에 문의하시기 바랍니다.
+                
+                - 개인분쟁조정위원회 (http://www.1336.or.kr / 1336)
+                - 정보보호마크인증위원회 (http://www.eprivacy.or.kr / (02) 580-0533~4)
+                - 대검찰청 사이버범죄수사단(http://www.spo.go.kr / (02) 3480-3573)
+                - 경찰청 사이버테러대응센터 (http://www.ctrc.go.kr / (02) 392-0330)
+                
+                9. 개인정보의 안전성 확보조치
+                본원은 이용자의 개인정보보호를 위한 기술적 대책으로서 여러 보안장치를 마련하고 있습니다. 이용자께서 보내시는 모든 정보는 방화벽장치에 의해 보호되는 보안시스템에 안전하게 보관/관리되고 있습니다.
+                또한 본원은 이용자의 개인정보보호를 위한 관리적 대책으로서 이용자의 개인정보에 대한 접근 및 관리에 필요한 절차를 마련하고, 이용자의 개인정보를 취급하는 인원을 최소한으로 제한하여 지속적인 보안교육을 실시하고
+                있습니다. 또한 개인정보를 처리하는 시스템의 사용자를 지정하여 사용자 비밀번호를 부여하고 이를 정기적으로 갱신하겠습니다.
+                
+                10. 정책 변경에 따른 공지의무
+                이 개인정보취급방침은 2012년 4월 1일에 제정되었으며 법령ㆍ정책또는 보안기술의 변경에 따라 내용의 추가ㆍ삭제및 수정이 있을 시에는 변경되는 개인정보취급방침을 시행하기 최소 7일전에 본원 홈페이지를 통해 변경이유
+                및 내용 등을 공지하도록 하겠습니다.
+                
+                - 공고일자 : 2022년 6월 10일
+                - 시행일자 : 2022년 6월 10일
+        </textarea
+                    >
+                </section>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function () {
+                $('.menu').on('click', function () {
+                    $(this).find('.hambergerIcon').toggleClass('open');
+                    $('.m_gnb').stop().slideToggle(300);
+                    $('body').toggleClass('fixed');
+                });
+                $('.m_nav>li>a').on('click', function () {
+                    $('body').removeClass('fixed');
+                    $('.m_gnb').stop().slideUp(300);
+                    $('.menu').find('.hambergerIcon').removeClass('open');
+                });
+            });
+        </script>
+        <script language="javascript">
+            var cellPhone = document.getElementById('wr_1');
+            cellPhone.onkeyup = function (event) {
+                event = event || window.event;
+                var _val = this.value.trim();
+                this.value = autoHypenPhone(_val);
+            };
+
+            function autoHypenPhone(str) {
+                str = str.replace(/[^0-9]/g, '');
+                var tmp = '';
+
+                if (str.substring(0, 2) == '02') {
+                    if (str.length < 3) {
+                        return str;
+                    } else if (str.length < 6) {
+                        tmp += str.substr(0, 2);
+                        tmp += '-';
+                        tmp += str.substr(2);
+                        return tmp;
+                    } else if (str.length < 10) {
+                        tmp += str.substr(0, 2);
+                        tmp += '-';
+                        tmp += str.substr(2, 3);
+                        tmp += '-';
+                        tmp += str.substr(5);
+                        return tmp;
+                    } else {
+                        tmp += str.substr(0, 2);
+                        tmp += '-';
+                        tmp += str.substr(2, 4);
+                        tmp += '-';
+                        tmp += str.substr(6, 4);
+                        return tmp;
+                    }
+                } else {
+                    if (str.length < 4) {
+                        return str;
+                    } else if (str.length < 7) {
+                        tmp += str.substr(0, 3);
+                        tmp += '-';
+                        tmp += str.substr(3);
+                        return tmp;
+                    } else if (str.length < 11) {
+                        tmp += str.substr(0, 3);
+                        tmp += '-';
+                        tmp += str.substr(3, 3);
+                        tmp += '-';
+                        tmp += str.substr(6);
+                        return tmp;
+                    } else {
+                        tmp += str.substr(0, 3);
+                        tmp += '-';
+                        tmp += str.substr(3, 4);
+                        tmp += '-';
+                        tmp += str.substr(7);
+                        return tmp;
+                    }
+                }
+
+                return str;
+            }
+
+            function fwrite_submit(f) {
+                var formData = new FormData($('#req_form')[0]);
+
+                $.ajax({
+                    url: 'theme/basic/langing_query.php',
+                    type: 'POST',
+                    //data: $("#fwrite").serialize(),
+                    data: formData,
+                    enctype: 'multipart/form-data',
+                    processData: false,
+                    contentType: false,
+                    async: true, //동기요청으로 함수 실행 후 ajax를 처리함
+                    success: function (re) {
+                        //alert(re);
+                        if (re == 'Y') {
+                            swal({
+                                title: '접수완료',
+                                text: '고객님의 상담 신청이 완료되었습니다. \n\n잠시만 기다리시면 통화가능시간에 \n담당자가 연락드리도록 하겠습니다. \n\n감사합니다.',
+                                type: 'success',
+                                showCancelButton: false,
+                                confirmButtonColor: '',
+                                confirmButtonText: '확인',
+                                closeOnConfirm: false,
+                            });
+
+                            f.reset();
+                        }
+                    },
+                });
+
+                return false;
+            }
+        </script>
+        <script>
+            $(function () {
+                $('.agree > label > a').click(function () {
+                    $('.privacy_bg').css('display', 'block');
+                    $('.privacy_wrap').fadeIn(500);
+                });
+                $('.privacy_btn').click(function () {
+                    $('.privacy_bg').css('display', 'none');
+                    $('.privacy_wrap').fadeOut(500);
+                });
+            }); //E;
+        </script>
+        <script>
+            var myElement = document.querySelector('header');
+            var headroom = new Headroom(myElement, {
+                offset: 0,
+                tolerance: 0,
+                classes: {
+                    initial: 'animated',
+                    pinned: 'slideDown',
+                    unpinned: 'slideUp',
+                },
+            });
+            headroom.init();
+        </script>
+        <script>
+            var swiper = new Swiper('.m_hd_banner_swiper', {
+                loop: true,
+                slidesPerView: 1,
+                direction: 'vertical',
+                autoplay: {
+                    delay: 3000,
+                },
+            });
+        </script>
+        <script>
+            var swiper = new Swiper('.m_main_banner_swiper', {
+                loop: true,
+                slidesPerView: 1,
+                autoplay: {
+                    delay: 5000,
+                },
+                pagination: {
+                    el: '.m_main_banner_page',
+                    clickable: true,
+                },
+            });
+        </script>
+        <script>
+            var swiper = new Swiper('.m_main_bna_swiper1', {
+                loop: true,
+                slidesPerView: 1,
+                centeredSlides: true,
+                direction: 'vertical',
+                autoplay: {
+                    delay: 5000,
+                },
+                navigation: {
+                    nextEl: '.m_main_bna_swiper_next',
+                    prevEl: '.m_main_bna_swiper_prev',
+                },
+            });
+        </script>
+        <script>
+            var swiper = new Swiper('.m_main_bna_swiper2', {
+                loop: true,
+                slidesPerView: 1,
+                centeredSlides: true,
+                direction: 'vertical',
+                autoplay: {
+                    delay: 5000,
+                },
+                navigation: {
+                    nextEl: '.m_main_bna_swiper_next',
+                    prevEl: '.m_main_bna_swiper_prev',
+                },
+            });
+        </script>
+        <script>
+            var swiper = new Swiper('.m_main_bna_swiper3', {
+                loop: true,
+                slidesPerView: 1,
+                centeredSlides: true,
+                direction: 'vertical',
+                autoplay: {
+                    delay: 5000,
+                },
+                navigation: {
+                    nextEl: '.m_main_bna_swiper_next',
+                    prevEl: '.m_main_bna_swiper_prev',
+                },
+            });
+        </script>
+        <script>
+            var menu = [
+                '3D CT',
+                '무통마취기',
+                '근관치료모터',
+                '임플란트 엔진',
+                '구강스캐너',
+                'Laser',
+                '3D Printer',
+                'Qray',
+            ];
+            var swiper = new Swiper('.m_main_equipment_swiper', {
+                loop: true,
+                slidesPerView: 1,
+                autoplay: {
+                    delay: 5000,
+                },
+                pagination: {
+                    el: '.m_main_equipment_page',
+                    clickable: true,
+                    renderBullet: function (index, className) {
+                        return (
+                            '<span class="' +
+                            className +
+                            '">' +
+                            menu[index] +
+                            '</span>'
+                        );
+                    },
+                },
+            });
+        </script>
+        <script>
+            var swiper = new Swiper('.m_main_category_swiper', {
+                loop: true,
+                slidesPerView: 1.55,
+                centeredSlides: true,
+                navigation: {
+                    nextEl: '.m_main_category_next',
+                    prevEl: '.m_main_category_prev',
+                },
+                autoplay: {
+                    delay: 3000,
+                },
+            });
+        </script>
+        <script>
+            var swiper = new Swiper('.m_main_interior_swiper2', {
+                loop: true,
+                slidesPerView: 3.5,
+                centeredSlides: true,
+                navigation: {
+                    nextEl: '.m_main_interior_next',
+                    prevEl: '.m_main_interior_prev',
+                },
+                autoplay: {
+                    delay: 3000,
+                },
+                allowTouchMove: false,
+                resistance: true,
+            });
+            var swiper2 = new Swiper('.m_main_interior_swiper', {
+                loop: true,
+                effect: 'flip',
+                navigation: {
+                    nextEl: '.m_main_interior_next',
+                    prevEl: '.m_main_interior_prev',
+                },
+                thumbs: {
+                    swiper: swiper,
+                },
+                allowTouchMove: false,
+                resistance: true,
+                slideToClickedSlide: false,
+                autoplay: {
+                    delay: 3000,
+                },
+            });
+        </script>
+        <script>
+            AOS.init();
+        </script>
+    </body>
+</html>
