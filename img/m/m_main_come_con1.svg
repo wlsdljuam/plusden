@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="390" height="463" viewBox="0 0 390 463">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="사각형_978" data-name="사각형 978" width="390" height="463" transform="translate(0 11781)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="마스크_그룹_40" data-name="마스크 그룹 40" transform="translate(0 -11781)" clip-path="url(#clip-path)">
+    <path id="패스_1138" data-name="패스 1138" d="M0,0H390.188V462.667H0Z" transform="translate(-0.188 11781)" fill="#ebe8e8" opacity="0.8"/>
+    <text id="진료시간_안내" data-name="진료시간 안내" transform="translate(98.267 11865.531)" fill="#003876" font-size="26" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-weight="700" letter-spacing="-0.04em"><tspan x="0" y="0">진료시간 안내</tspan></text>
+    <text id="목_:_오전_10:00_-_오후_07:00" data-name="목 :  오전 10:00 - 오후 07:00" transform="translate(53.823 12027)" fill="#404040" font-size="18" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" letter-spacing="-0.04em" font-weight="700"><tspan x="0" y="0" xml:space="preserve">목 :  </tspan><tspan y="0" font-family="NotoSansCJKkr-Regular, Noto Sans CJK KR" font-weight="400">오전 10:00 - 오후 7:00</tspan></text>
+    <text id="화_:_오전_10:00_-_오후_07:00" data-name="화 :  오전 10:00 - 오후 07:00" transform="translate(53.823 11953)" fill="#404040" font-size="18" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" letter-spacing="-0.04em" font-weight="700"><tspan x="0" y="0">화 : </tspan><tspan y="0" xml:space="preserve" font-family="NotoSansCJKkr-Regular, Noto Sans CJK KR" font-weight="400"> 오전 10:00 - 오후 7:00</tspan></text>
+    <text id="금_:_오전_10:00_-_오후_06:00" data-name="금 :  오전 10:00 - 오후 06:00" transform="translate(53.823 12064)" fill="#404040" font-size="18" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" letter-spacing="-0.04em" font-weight="700"><tspan x="0" y="0">금 :</tspan><tspan y="0" xml:space="preserve" font-family="NotoSansCJKkr-Regular, Noto Sans CJK KR" font-weight="400">  오전 10:00 - 오후 6:00</tspan></text>
+    <text id="일_:_오전_10:00_-_오후_05:00" data-name="일 :  오전 10:00 - 오후 05:00" transform="translate(53.823 12101)" fill="#404040" font-size="18" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" letter-spacing="-0.04em" font-weight="700"><tspan x="0" y="0">일 :</tspan><tspan y="0" xml:space="preserve" font-family="NotoSansCJKkr-Regular, Noto Sans CJK KR" font-weight="400">  오전 10:00 - 오후 5:00</tspan></text>
+    <text id="점심시간_:_오후_01:00_오후_02:00" data-name="점심시간 :  오후 01:00~ 오후  02:00" transform="translate(53.823 12138)" fill="#404040" font-size="18" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" letter-spacing="-0.04em" font-weight="700"><tspan x="0" y="0">점심시간 : </tspan><tspan y="0" xml:space="preserve" font-family="NotoSansCJKkr-Regular, Noto Sans CJK KR" font-weight="400"> 오후 1:00 - 오후 2:00</tspan></text>
+    <text id="토_공휴일_:_휴진_" data-name="토, 공휴일 :  휴진 " transform="translate(53.823 12175)" fill="#404040" font-size="18" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" letter-spacing="-0.04em" font-weight="700"><tspan x="0" y="0">토, 공휴일 :</tspan><tspan y="0" xml:space="preserve" font-family="NotoSansCJKkr-Regular, Noto Sans CJK KR" font-weight="400">  휴진</tspan></text>
+    <text id="수_:_오전_10:00_-_오후_09:00_야간진료_" data-name="수 :  오전 10:00 - 오후 09:00 (야간진료) " transform="translate(53.823 11990)" fill="#404040" font-size="18" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" letter-spacing="-0.04em" font-weight="700"><tspan x="0" y="0">수 :</tspan><tspan y="0" xml:space="preserve" font-family="NotoSansCJKkr-Regular, Noto Sans CJK KR" font-weight="400">  오전 10:00 - 오후 9:00 (야간진료)</tspan></text>
+    <text id="월_:_오전_10:00_-_오후_07:00" data-name="월 :  오전 10:00 - 오후 07:00" transform="translate(53.823 11916)" fill="#404040" font-size="18" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" letter-spacing="-0.04em" font-weight="700"><tspan x="0" y="0">월 :</tspan><tspan y="0" xml:space="preserve" font-family="NotoSansCJKkr-Regular, Noto Sans CJK KR" font-weight="400">  오전 10:00 - 오후 7:00</tspan></text>
+    <g id="그룹_1545" data-name="그룹 1545" transform="translate(53 11841.293)">
+      <path id="패스_514" data-name="패스 514" d="M30.915,768.992A15.677,15.677,0,0,0,31,767.355a15.484,15.484,0,1,0-.746,4.765" transform="translate(0 -751.855)" fill="none" stroke="#003876" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+      <path id="패스_515" data-name="패스 515" d="M104.432,801.159l-4.523-4.279V786.8" transform="translate(-84.408 -781.379)" fill="none" stroke="#003876" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+      <path id="패스_516" data-name="패스 516" d="M184.962,840.945l-3.33,3.237-3.237-3.33" transform="translate(-150.718 -827.044)" fill="none" stroke="#003876" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+    </g>
+  </g>
+</svg>

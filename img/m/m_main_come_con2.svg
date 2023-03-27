@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="390" height="288" viewBox="0 0 390 288">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="사각형_979" data-name="사각형 979" width="390" height="288" transform="translate(0 12244)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="마스크_그룹_41" data-name="마스크 그룹 41" transform="translate(0 -12244)" clip-path="url(#clip-path)">
+    <g id="그룹_1547" data-name="그룹 1547" transform="translate(10.794 270.277)">
+      <g id="그룹_985" data-name="그룹 985" transform="translate(44.299 12015.917)">
+        <g id="그룹_982" data-name="그룹 982" transform="translate(0 0)">
+          <g id="그룹_981" data-name="그룹 981">
+            <path id="패스_512" data-name="패스 512" d="M-780.262,722.13a13.865,13.865,0,0,0-19.608,0c-5.414,5.414-2.85,12.945.924,19.607,1.966,3.469,8.879,13.489,8.879,13.489s6.914-10.019,8.88-13.489C-777.411,735.076-774.847,727.545-780.262,722.13Zm-9.8,15.2a7.524,7.524,0,0,1-7.524-7.524,7.524,7.524,0,0,1,7.524-7.524,7.523,7.523,0,0,1,7.524,7.524A7.524,7.524,0,0,1-790.065,737.332Z" transform="translate(802.972 -718.07)" fill="#003876"/>
+          </g>
+        </g>
+        <g id="그룹_984" data-name="그룹 984" transform="translate(8.063 6.895)">
+          <g id="그룹_983" data-name="그룹 983" transform="translate(0)">
+            <circle id="타원_11" data-name="타원 11" cx="4.843" cy="4.843" r="4.843" fill="#003876"/>
+          </g>
+        </g>
+      </g>
+      <text id="오시는_길_" data-name="오시는 길 " transform="translate(81.133 12042.494)" fill="#003876" font-size="27" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-weight="700" letter-spacing="-0.04em"><tspan x="0" y="0">오시는 길 </tspan></text>
+      <text id="서울_동대문구_사가정로_122_하우스토리_304호_305호_306호" data-name="서울 동대문구 사가정로 122 하우스토리
+304호, 305호, 306호" transform="translate(42.206 12097.846)" fill="#404040" font-size="17" font-family="NotoSansCJKkr-Regular, Noto Sans CJK KR" letter-spacing="-0.05em"><tspan x="0" y="0">서울 동대문구 사가정로 122 하우스토리</tspan><tspan x="0" y="30">304호, 305호, 306호</tspan></text>
+      <text id="자차_이용시" data-name="자차 이용시" transform="translate(69.372 12180.237)" fill="#202020" font-size="18" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-weight="500" letter-spacing="-0.05em"><tspan x="0" y="0">자차 이용시</tspan></text>
+      <text id="_" data-name="
+" transform="translate(42.206 12213.745)" fill="#404040" font-size="15" font-family="NotoSansCJKkr-Regular, Noto Sans CJK KR" letter-spacing="-0.05em"><tspan x="0" y="0"></tspan><tspan x="0" y="31"></tspan></text>
+      <text id="_-_건물_지하_주차장_주차가능" data-name="- 건물 지하 주차장 주차가능" transform="translate(42.206 12211.51)" fill="#5d5d5d" font-size="14" font-family="NotoSansCJKkr-Regular, Noto Sans CJK KR" letter-spacing="-0.04em"><tspan x="0" y="0">- 건물 지하 주차장 주차가능</tspan></text>
+      <rect id="사각형_919" data-name="사각형 919" width="21.233" height="21.233" rx="4" transform="translate(42.206 12164.458)" fill="#0071bd"/>
+      <text id="P" transform="translate(48.578 12179.431)" fill="#fff" font-size="15" font-family="Pretendard-Bold, Pretendard" font-weight="700" letter-spacing="-0.04em"><tspan x="0" y="0">P</tspan></text>
+    </g>
+  </g>
+</svg>
